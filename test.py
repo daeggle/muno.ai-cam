@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[1]:
-
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -13,8 +9,6 @@ from unet import UNet
 
 import cv2
 import numpy as np
-# In[2]:
-
 
 dataset_path = 'deepscores/deep_scores_v2_100p/images_png/'
 gt_path = 'deepscores/deep_scores_v2_100p/pix_annotations_png/'
@@ -26,25 +20,13 @@ for line in lines:
     test_file_names.append(line)
 f.close()
 
-
-# In[3]:
-
-
 batch_size = 2
 epochs = 20
 size_x = 512 #540 #1080
 size_y = 768 #960 #1920
 
-
-# In[5]:
-
-
 train_dataset = MyDataset(dataset_path, gt_path, test_file_names, size_x, size_y)
 dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-
-
-# In[ ]:
-
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = UNet(n_classes=159, padding=True, up_mode='upconv').to(device)
