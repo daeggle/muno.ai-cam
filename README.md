@@ -12,8 +12,8 @@
             -~~~~.png
             -~~~~.png
         -xml_annotations
-            -~~~~.png
-            -~~~~.png
+            -~~~~.xml
+            -~~~~.xml
     -test_output
 -train_files.txt
 -valid_files.txt
